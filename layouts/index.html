@@ -1,0 +1,7 @@
+{{define "main"}}
+<ul class='list'>
+  {{ range .Paginator.Pages }}
+    <li><a href="{{.URL}}">{{ .Title}}</a></li>
+  {{ end }}
+</ul>
+{{end}}
