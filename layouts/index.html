@@ -1,7 +1,25 @@
 {{define "main"}}
-<ul class='list'>
-  {{ range .Paginator.Pages }}
-    <li><a href="{{.URL}}">{{ .Title}}</a></li>
-  {{ end }}
-</ul>
+
+
+<section>
+  <ul class='list'>
+    {{ range .Paginator.Pages }}
+      <li><a href="{{.URL}}">{{ .Title}}</a></li>
+    {{ end }}
+  </ul>
+</section>
+
+<aside>
+      <ul id="all-taxonomies">
+          {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+            <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a>
+              <ul>
+                {{ range $key, $value := $taxonomy }}
+                <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}/{{$key}}">{{ $key }}({{len $value.Pages}})</a></li>
+                {{ end }}
+              </ul>
+            </li>
+          {{ end }}
+        </ul>
+</aside>
 {{end}}
