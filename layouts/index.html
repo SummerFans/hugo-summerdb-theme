@@ -3,10 +3,11 @@
 
 <section>
   <ul class='list'>
-    {{ range .Paginator.Pages }}
+    {{ range sort .Paginator.Pages }}
       <li><a href="{{.URL}}">{{ .Title}}</a></li>
     {{ end }}
   </ul>
+  
 </section>
 
 <aside>

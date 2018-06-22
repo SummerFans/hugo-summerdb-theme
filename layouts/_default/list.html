@@ -1,1 +1,8 @@
 {{ template "index.html" . }}
+<section>
+    <ul class='list'>
+      {{ range sort .Paginator.Pages }}
+        <li><a href="{{.URL}}">{{ .Title}}</a></li>
+      {{ end }}
+    </ul>
+  </section>
