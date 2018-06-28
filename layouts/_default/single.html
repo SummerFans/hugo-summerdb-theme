@@ -1,10 +1,9 @@
 
 {{ partial "header" . }}
-<h3>{{.Title}}</h3>
 
 <div class="">{{.Content}}</div>
 
 {{if .Site.DisqusShortname}}
-{{ template "_internal/disqus.html" . }}
+    {{ template "_internal/disqus.html" . }}
 {{end}}
 {{ partial "footer" . }}
