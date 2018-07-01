@@ -1,7 +1,7 @@
 
 {{ partial "header" . }}
 
-<div class="">{{.Content}}</div>
+<div class="markdown-body">{{.Content}}</div>
 
 {{if .Site.DisqusShortname}}
     {{ template "_internal/disqus.html" . }}

@@ -1,36 +1,15 @@
-{{define "main"}}
+<html lang="zh-cn">
+  <head>
+    <link href="//fonts.googleapis.com/css?family=Cardo" type="text/css" rel="stylesheet" />
+    <link href="//markdowncss.github.io/air/css/air.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
+    <title>{{.Site.Title}}</title>
+  </head>
 
-<div class="container">
-  <section>
-    <ul class="articles">
-      {{ range sort .Paginator.Pages }}
-      <li>
-        <h4><a href="{{.URL}}">{{ .Title}}</a></h4>
-        <p>
-            {{ if .Params.category }}
-              {{ .Params.category }}
-            {{ end }} | 
-          {{.Date.Format "January 2, 2006"}} </p>
-      </li>
-      {{ end }}
-    </ul>
-  </section>
-
-  <aside>
-    <ul id="all-taxonomies">
-      {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-      <li>
-        <a href="{{ " / " | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a>
-        <ul>
-          {{ range $key, $value := $taxonomy }}
-          <li>
-            <a href="{{ " / " | relLangURL}}{{ $taxonomyname | urlize }}/{{$key}}">{{ $key }}({{len $value.Pages}})</a>
-          </li>
-          {{ end }}
-        </ul>
-      </li>
-      {{ end }}
-    </ul>
-  </aside>
-</div>
-{{end}}
+  <body>
+    <header>
+      <h1><a href="/">{{.Site.Title}}</a></h1>
+    </header>
+    {{partial "nav" .}}
+    <h2>My name is Summer</h2>
+    {{partial "footer" .}}

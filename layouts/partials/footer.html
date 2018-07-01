@@ -2,5 +2,23 @@
 {{ template "_internal/google_analytics_async.html" . }}
 {{ end }}
 
-
+<footer class="footer">
+    <small>&copy; Copyright 2018 <a href="https://github.com/SummerFans/hugo-summerdb-theme">summerdb</a> </small>
+</footer>
+<script> 
+    //    hljs.initHighlighting();
+      if(window.hljs) {
+       hljs.initHighlightingOnLoad();
+      //  console.log(hljs.initHighlightingOnLoad)
+       $('pre code').each(function(i, block) {
+        var s = block.className.split('-')
+        if (s.length >= 2) {
+          block.className = s[1]
+        } else {
+          block.className = s[0]
+        }
+        });
+      }
+    </script>
 </body>
+</html>
