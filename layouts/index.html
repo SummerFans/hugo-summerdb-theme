@@ -1,15 +1,59 @@
-<html lang="zh-cn">
-  <head>
-    <link href="//fonts.googleapis.com/css?family=Cardo" type="text/css" rel="stylesheet" />
-    <link href="//markdowncss.github.io/air/css/air.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ "css/style.css" | absURL }}">
-    <title>{{.Site.Title}}</title>
-  </head>
+{{define "main"}}
+<div class="container">
+    <section>
+      <!--  -->
+        {{ $paginator := .Paginate (where .Data.Pages "Section" "2018") }}
+      <ul class="articles">
+        {{ range sort .Paginator.Pages }}
+        <li class="article-li">
+          <h4 class="article-title"><a href="{{.URL}}">{{ .Title}}</a></h4>
+          <p class="article-p">
+              {{ if .Params.category }}
+              <span><i class="icon-cat"></i>{{ .Params.category }}</span>
+              {{ end }}
+            <span class="article-time"><i class="icon-time"></i>{{.Date.Format "January 2, 2006"}}</span></p>
+            <!-- <p>{{ if .Params.tags }}
+                {{ range $tagIndex,$tagName := .Params.tags}}
+                  {{$tagName}}
+                {{end}}
+                {{ end }}</p> -->
+        </li>
+        {{ end }}
+      </ul>
 
-  <body>
-    <header>
-      <h1><a href="/">{{.Site.Title}}</a></h1>
-    </header>
-    {{partial "nav" .}}
-    <h2>My name is Summer</h2>
-    {{partial "footer" .}}
+      <!-- 分页 -->
+      <ul class="article-page">
+        {{ if $paginator.HasPrev}}
+        <li class="article-page-left"><a href="{{ $paginator.Prev.URL }}">Prev</a></li>
+        {{ else }}
+        <li class="article-page-left disabled">Prev</li>
+        {{ end }}
+        {{ if $paginator.HasNext }}
+        <a class="article-page-right" href="{{ $paginator.Next.URL }}">Next</a>
+        {{ else }}
+        <li class="article-page-right disabled">Next</li>
+        {{ end }}
+      </ul>
+    </section>
+  
+    <aside>
+      <ul id="all-taxonomies">
+        {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+        <!-- or (eq $taxonomyname "categoryx")  -->
+          {{if (eq $taxonomyname "tags")}}
+          <li class="aside-{{$taxonomyname}}">
+            <a class="aside-father" href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a>
+            <ul class="aside-child" >
+              {{ range $key, $value := $taxonomy }}
+              <li>
+                <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}/{{$key}}">{{ $key }}({{len $value.Pages}})</a>
+              </li>
+              {{ end }}
+            </ul>
+          </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </aside>
+  </div>
+  {{end}}

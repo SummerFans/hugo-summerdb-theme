@@ -1,9 +1,9 @@
-
-{{ partial "header" . }}
+{{define "main"}}
 
 <div class="markdown-body">{{.Content}}</div>
 
 {{if .Site.DisqusShortname}}
     {{ template "_internal/disqus.html" . }}
 {{end}}
-{{ partial "footer" . }}
+
+{{end}}

@@ -1,23 +1,40 @@
 {{define "main"}}
 
 <section>
-  <ul id="all-taxonomies">
-    {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-      <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a>
-        <ul>
-          {{ range $key, $value := $taxonomy }}
-          <li> {{ $key }} </li>
-                <ul>
-                {{ range $value.Pages }}
-                    <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
-                {{ end }}
-                </ul>
-          {{ end }}
-        </ul>
+    <!--  -->
+      {{ $paginator := .Paginate (where .Data.Pages "Section" "2018") }}
+    <ul class="articles">
+      {{ range sort .Paginator.Pages }}
+      <li class="article-li">
+        <h4 class="article-title"><a href="{{.URL}}">{{ .Title}}</a></h4>
+        <p class="article-p">
+            {{ if .Params.category }}
+            <span><i class="icon-cat"></i>{{ .Params.category }}</span>
+            {{ end }}
+          <span class="article-time"><i class="icon-time"></i>{{.Date.Format "January 2, 2006"}}</span></p>
+          <!-- <p>{{ if .Params.tags }}
+              {{ range $tagIndex,$tagName := .Params.tags}}
+                {{$tagName}}
+              {{end}}
+              {{ end }}</p> -->
       </li>
-    {{ end }}
-  </ul>
-</section>
+      {{ end }}
+    </ul>
+
+    <!-- 分页 -->
+    <ul class="article-page">
+      {{ if $paginator.HasPrev}}
+      <li class="article-page-left"><a href="{{ $paginator.Prev.URL }}">Prev</a></li>
+      {{ else }}
+      <li class="article-page-left disabled">Prev</li>
+      {{ end }}
+      {{ if $paginator.HasNext }}
+      <a class="article-page-right" href="{{ $paginator.Next.URL }}">Next</a>
+      {{ else }}
+      <li class="article-page-right disabled">Next</li>
+      {{ end }}
+    </ul>
+  </section>
 
 
 {{end}}
