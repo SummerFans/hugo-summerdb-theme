@@ -1,40 +1,46 @@
 {{define "main"}}
-
-<section>
-    <!--  -->
-      {{ $paginator := .Paginate (where .Data.Pages "Section" "2018") }}
-    <ul class="articles">
+<div class="content">
+  <div class="content-inner">
+    <h3>Tag</h3>
+    <section>
+      {{ $paginator := .Paginate (where .Data.Pages "Section" "post") 8 }}
       {{ range sort .Paginator.Pages }}
-      <li class="article-li">
+      {{ if .Params.tags }}
+      <article class="article">
+        <p class="article-date">
+          {{.Date.Format "2006/01/02"}}
+        </p>
         <h4 class="article-title"><a href="{{.URL}}">{{ .Title}}</a></h4>
-        <p class="article-p">
-            {{ if .Params.category }}
-            <span><i class="icon-cat"></i>{{ .Params.category }}</span>
-            {{ end }}
-          <span class="article-time"><i class="icon-time"></i>{{.Date.Format "January 2, 2006"}}</span></p>
-          <!-- <p>{{ if .Params.tags }}
-              {{ range $tagIndex,$tagName := .Params.tags}}
-                {{$tagName}}
-              {{end}}
-              {{ end }}</p> -->
-      </li>
-      {{ end }}
-    </ul>
+        <p class="article-summary">{{.Summary}}</p>
 
-    <!-- 分页 -->
-    <ul class="article-page">
-      {{ if $paginator.HasPrev}}
-      <li class="article-page-left"><a href="{{ $paginator.Prev.URL }}">Prev</a></li>
-      {{ else }}
-      <li class="article-page-left disabled">Prev</li>
-      {{ end }}
-      {{ if $paginator.HasNext }}
-      <a class="article-page-right" href="{{ $paginator.Next.URL }}">Next</a>
-      {{ else }}
-      <li class="article-page-right disabled">Next</li>
-      {{ end }}
-    </ul>
-  </section>
+        <!-- <p class="des">{{.Params.description}}</p> -->
+        <!-- <p>{{ if .Params.tags }}
+          {{ range $tagIndex,$tagName := .Params.tags}}
+          {{$tagName}}
+          {{end}}
+          {{ end }}</p> -->
 
+        {{.Data.Terms.ByCount}}
+      </article>
+      {{end}}
+      {{ end }}
 
+      <!-- 分页 -->
+      <ul class="article-page">
+        {{ if $paginator.HasPrev}}
+        <li class="article-page-left"><a href="{{ $paginator.Prev.URL }}">Prev</a></li>
+        {{ else }}
+        <li class="article-page-left disabled">Prev</li>
+        {{ end }}
+        {{ if $paginator.HasNext }}
+        <a class="article-page-right" href="{{ $paginator.Next.URL }}">Next</a>
+        {{ else }}
+        <li class="article-page-right disabled">Next</li>
+        {{ end }}
+      </ul>
+    </section>
+
+    {{- partial "footer.html" . -}}
+  </div>
+</div>
 {{end}}

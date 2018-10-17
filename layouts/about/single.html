@@ -1,7 +1,10 @@
 {{define "main"}}
 <div class="content">
     <div class="content-inner">
-        <h3>{{.Content}}</h3>
+        <div class="markdown-body about_info">
+            {{.Content}}
+            
+        </div>
     </div>
     {{- partial "footer.html" . -}}
 </div>

@@ -19,3 +19,6 @@ min_version = "0.41"
   name = ""
   homepage = ""
   repo = ""
+
+summaryLength = 2010
+paginate = 10

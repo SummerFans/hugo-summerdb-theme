@@ -1,4 +1,7 @@
-<header>
-        <h1><a href="/"/>{{.Site.Title}}</a></h1>
-        {{partial "nav" .}}
-    </header>
+<header id="header" class="noprint">
+    <div id="logo">
+        <h1><a href="/" />{{.Site.Title}}</a></h1>
+    </div>
+    {{partial "nav" .}}
+    {{partial "nav_tag" .}}
+</header>

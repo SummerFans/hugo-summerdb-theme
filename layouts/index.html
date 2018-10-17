@@ -1,25 +1,27 @@
 {{define "main"}}
-<div class="container">
+<div class="content">
+  <div class="content-inner">
     <section>
-      <!--  -->
-        {{ $paginator := .Paginate (where .Data.Pages "Section" "2018") }}
-      <ul class="articles">
-        {{ range sort .Paginator.Pages }}
-        <li class="article-li">
-          <h4 class="article-title"><a href="{{.URL}}">{{ .Title}}</a></h4>
-          <p class="article-p">
-              {{ if .Params.category }}
-              <span><i class="icon-cat"></i>{{ .Params.category }}</span>
-              {{ end }}
-            <span class="article-time"><i class="icon-time"></i>{{.Date.Format "January 2, 2006"}}</span></p>
-            <!-- <p>{{ if .Params.tags }}
-                {{ range $tagIndex,$tagName := .Params.tags}}
-                  {{$tagName}}
-                {{end}}
-                {{ end }}</p> -->
-        </li>
-        {{ end }}
-      </ul>
+      {{ $paginator := .Paginate (where .Data.Pages "Section" "post") 8 }}
+      <!-- { $paginator := .Paginate (where .Data.Pages "Section" "Angular") } -->
+      {{ range sort .Paginator.Pages }}
+      <article class="article">
+        <p class="article-date">
+          {{.Date.Format "2006/01/02"}}
+        </p>
+        <h4 class="article-title"><a href="{{.URL}}">{{ .Title}}</a></h4>
+        <p class="article-summary">{{.Summary}}</p>
+
+        <!-- <p class="des">{{.Params.description}}</p> -->
+        <!-- <p>{{ if .Params.tags }}
+          {{ range $tagIndex,$tagName := .Params.tags}}
+          {{$tagName}}
+          {{end}}
+          {{ end }}</p> -->
+
+        {{.Data.Terms.ByCount}}
+      </article>
+      {{ end }}
 
       <!-- 分页 -->
       <ul class="article-page">
@@ -35,25 +37,8 @@
         {{ end }}
       </ul>
     </section>
-  
-    <aside>
-      <ul id="all-taxonomies">
-        {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
-        <!-- or (eq $taxonomyname "categoryx")  -->
-          {{if (eq $taxonomyname "tags")}}
-          <li class="aside-{{$taxonomyname}}">
-            <a class="aside-father" href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a>
-            <ul class="aside-child" >
-              {{ range $key, $value := $taxonomy }}
-              <li>
-                <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}/{{$key}}">{{ $key }}({{len $value.Pages}})</a>
-              </li>
-              {{ end }}
-            </ul>
-          </li>
-          {{ end }}
-        {{ end }}
-      </ul>
-    </aside>
+
+    {{- partial "footer.html" . -}}
   </div>
-  {{end}}
+</div>
+{{end}}

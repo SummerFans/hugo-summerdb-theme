@@ -1,0 +1,23 @@
+<aside>
+    {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+    {{if (eq $taxonomyname "tags")}}
+    <h4>Tag</h4>
+    <ul id="all-taxonomies">
+        {{ range $key, $value := $taxonomy }}
+        <li class="aside-{{$taxonomyname}}">
+            <a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}/{{$key}}">
+                {{ $key }}({{len $value.Pages}})</a>
+        {{ end }}
+        </li>
+    </ul>
+    {{ else if (eq $taxonomyname "category")}}
+    <h4>Category</h4>
+    <ul>
+        {{ range $key, $value := $taxonomy }}
+        <li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}/{{$key}}">
+            {{ $key }}({{len $value.Pages}})</a></li>
+        {{end}}
+    </ul>
+    {{ end }}
+    {{ end }}
+</aside>

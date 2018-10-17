@@ -1,5 +1,37 @@
 {{define "main"}}
-category
-{{end}}
+<div class="content">
+  <div class="content-inner">
+    <h3>Category</h3>
+    <section>
+      {{ $paginator := .Paginate (where .Data.Pages "Section" "post") 8 }}
+      {{ range sort .Paginator.Pages }}
+      {{ if .Params.category }}
+      <article class="article">
+        <p class="article-date">
+          {{.Date.Format "2006/01/02"}}
+        </p>
+        <h4 class="article-title"><a href="{{.URL}}">{{ .Title}}</a></h4>
+        <p class="article-summary">{{.Summary}}</p>
+        {{.Data.Terms.ByCount}}
+      </article>
+      {{end}}
+      {{ end }}
 
-{{ template "_internal/pagination.html" . }}
+      <!-- 分页 -->
+      <ul class="article-page">
+        {{ if $paginator.HasPrev}}
+        <li class="article-page-left"><a href="{{ $paginator.Prev.URL }}">Prev</a></li>
+        {{ else }}
+        <li class="article-page-left disabled">Prev</li>
+        {{ end }}
+        {{ if $paginator.HasNext }}
+        <a class="article-page-right" href="{{ $paginator.Next.URL }}">Next</a>
+        {{ else }}
+        <li class="article-page-right disabled">Next</li>
+        {{ end }}
+      </ul>
+    </section>
+    {{- partial "footer.html" . -}}
+  </div>
+</div>
+{{end}}
