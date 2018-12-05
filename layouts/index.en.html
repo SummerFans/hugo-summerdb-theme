@@ -1,8 +1,8 @@
 {{ define "main"}}
 <section class="list">
-  {{ range .Pages }}
+  {{ range where .Pages "Section" "post" }}
   <article class="item">
-    <h2><a href="#"> {{.Title}}</a></h2>
+    <h2 class="title title_en"><a href="#"> {{.Title}}</a></h2>
     <div class="articlemeta">
       {{if .Params.author}}
       <span>Posted by: {{.Params.author}} </span>
@@ -12,7 +12,7 @@
       on 
       <time datetime="2017-01-12">{{ .Date.Format "January 2, 2006" }}</time></div>
     <div>
-       {{.Params.description}}
+       {{.Summary}}
     </div>
   </article>
   {{ end }}

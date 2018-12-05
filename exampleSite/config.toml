@@ -1,0 +1,71 @@
+baseURL = "http://example.org/"
+title = "Summerdb"
+theme = "hugo-summerdb-theme"
+
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = true
+
+[languages.en]
+  languageCode = "en-us"
+
+[languages.zh]
+  languageCode = "zh-cn"
+
+
+pygmentsUseClassic = true
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+
+# Summary Length
+hasCJKLanguage = true
+
+[params]
+  AuthorName = "summer"
+
+[menu]
+  [[languages.en.menu.main]]
+    name = "中文"
+    url = "../zh"
+    weight = 99
+  [[languages.en.menu.main]]
+    name = "Index"
+    url = "#about"
+    weight = 1
+
+  [[languages.en.menu.main]]
+    name = "Tags"
+    identifier = "Tags"
+    pre = "<i class='fa fa-road'></i>"
+    url = "/tags/"
+    weight = 2
+
+  [[languages.en.menu.main]]
+    identifier = "About"
+    name = "About"
+    pre = "<i class='fa fa-heart'></i>"
+    url = "/about/summer"
+    weight = 3
+
+  [[languages.zh.menu.main]]
+    name = "首页"
+    url = "#about"
+    weight = 1
+
+  [[languages.zh.menu.main]]
+    name = "标签"
+    identifier = "Tags"
+    pre = "<i class='fa fa-road'></i>"
+    url = "/tags/"
+    weight = 2
+
+  [[languages.zh.menu.main]]
+    name = "关于我"
+    identifier = "About"
+    pre = "<i class='fa fa-heart'></i>"
+    url = "/about/summer" 
+    weight = 3
+  [[languages.zh.menu.main]]
+    name = "EN"
+    url = "../en"
+    weight = 99
+ 

@@ -278,6 +278,10 @@ img {
   margin: 0 auto;
   padding-bottom: 40px;
 }
+.container .list {
+  width: 100%;
+  overflow: hidden;
+}
 .container .list .item {
   border-bottom: 0.55px solid #eee;
   padding: 40px 0;
@@ -289,6 +293,9 @@ img {
 }
 .container .list .item .title a:hover {
   border-bottom: 3px solid #eee;
+}
+.container .list .item .title_en {
+  font-family: "PT Serif", "Times New Roman", Serif;
 }
 .container .list .item .articlemeta {
   padding: 20px 0;
@@ -349,6 +356,29 @@ img {
 }
 .container .article-page .disabled {
   color: #ccc;
+}
+.container .main {
+  width: 100%;
+  overflow: hidden;
+}
+.container .main .content .highlight {
+  margin: 30px 0;
+}
+.container .main .content .highlight .chroma {
+  position: relative;
+  border-radius: 10px;
+  padding: 10px 15px;
+  overflow: hidden;
+  overflow-x: scroll;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+}
+.container .main .content .highlight .chroma:hover {
+  background-color: #000;
+  width: 100%;
+}
+.container .main .content .highlight .chroma code {
+  width: 100%;
 }
 .container .content {
   -webkit-flex: none;
@@ -433,6 +463,16 @@ img {
   line-height: 80px;
   color: #999;
   font-size: 0.9rem;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 0px;
+  background-color: #f2f2f2;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+  background-color: #ccc;
 }
 
 /*# sourceMappingURL=style.css.map*/

@@ -3,8 +3,8 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 author: {{.Site.Params.AuthorName}}
 tags: []
-category: []
-description: ""
-source: ""
+category: 
+description: 
+source: 
 draft: true
 ---

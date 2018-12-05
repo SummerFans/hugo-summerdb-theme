@@ -1,8 +1,6 @@
 {{ define "main"}}
 <section class="list">
-
-    {{ with .Site.GetPage "/post/xxx.md" }}1{{end}}
-  {{ range .Pages }}
+  {{ range where .Pages "Section" "post" }}
   <article class="item">
     <h2 class="title"><a href="{{.URL}}"> {{.Title}}</a></h2>
     <div class="articlemeta">
@@ -17,7 +15,7 @@
       在
       <time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "2006-01-02"}}</time></div>
     <div>
-      {{.Params.description}}
+     {{.Summary}}
     </div>
     {{ if .Params.tags }}
     <ol class="tags">
