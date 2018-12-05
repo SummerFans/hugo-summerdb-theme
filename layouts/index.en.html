@@ -1,0 +1,20 @@
+{{ define "main"}}
+<section class="list">
+  {{ range .Pages }}
+  <article class="item">
+    <h2><a href="#"> {{.Title}}</a></h2>
+    <div class="articlemeta">
+      {{if .Params.author}}
+      <span>Posted by: {{.Params.author}} </span>
+      {{else if .Params.source}}
+      <span>Source: <a href="{{.Params.sourceLink}}" target="_block">{{.Params.source}}</a></span>
+      {{end}}
+      on 
+      <time datetime="2017-01-12">{{ .Date.Format "January 2, 2006" }}</time></div>
+    <div>
+       {{.Params.description}}
+    </div>
+  </article>
+  {{ end }}
+</section>
+{{ end }}
