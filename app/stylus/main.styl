@@ -12,11 +12,49 @@ img {
     width: 100%;
 }
 
+// syntax style
+.highlight {
+    margin: 30px 0;
+
+    .chroma {
+        position: relative;
+        border-radius: 10px;
+        padding: 10px 15px;
+        overflow: hidden;
+        overflow-x: scroll;
+        transition: all 0.5s;
+
+        &:hover {
+            box-shadow: inset 0 0 10px #000;
+            width: 100%;
+        }
+
+        code {
+            width: 100%;
+            font-family: monospace;
+        }
+    }
+}
+
+blockquote{
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    font-style: italic;
+    background-color: #f2f2f2;
+    p{
+        margin: 0;
+    }
+}
+
+
 #header {
     flex: none;
-    width: 100%;
     padding: 40px;
+    height: 120px;
     overflow: hidden;
+    position: relative;
+    box-sizing: content-box;
 
     // height: 100vh;
     // background-color: $primary;
@@ -33,12 +71,23 @@ img {
         }
     }
 
-    nav {
+    .menu {
         float: right;
 
+        label {
+            padding-top: 32px;
+            font-size: 1.5rem;
+            display: none;
+        }
+
+        #toggle {
+            display: none;
+        }
+
         // padding: 1.5rem;
-        ul {
+        .menu_list {
             display: flex;
+            line-height: 70px;
 
             li {
                 display: list-item;
@@ -77,8 +126,9 @@ img {
                     }
                 }
             }
-            .title_en{
-                font-family: "PT Serif","Times New Roman",Serif
+
+            .title_en {
+                font-family: 'PT Serif', 'Times New Roman', Serif;
             }
 
             .articlemeta {
@@ -151,33 +201,16 @@ img {
         }
     }
 
-
-    .main{
+    .main {
         width: 100%;
         overflow: hidden;
-        .content{
-            .highlight{
-                margin: 30px 0;
-                .chroma{
-                    position: relative;
-                    border-radius: 10px;
-                    padding: 10px 15px;
-                    overflow: hidden;
-                    overflow-x: scroll;
-                    transition: background .5s;
-                    &:hover{
-                        background-color: #000;
-                        width: 100%;
-                    }
-                    code{
-                        width: 100%;
-                    }
-                }
-            }
-        }
-        .comment{}
-    }
 
+        .content {
+        }
+
+        .comment {
+        }
+    }
 
     // low
     .content {
@@ -289,17 +322,16 @@ img {
     font-size: 0.9rem;
 }
 
-
-::-webkit-scrollbar 
-{ 
+::-webkit-scrollbar {
     width: 10px;
-    height: 0px; 
-    background-color: #f2f2f2; 
-} 
-::-webkit-scrollbar-thumb 
-{ 
-    border-radius: 10px; 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.05); 
-    background-color: #ccc; 
+    height: 0px;
+    background-color: #f2f2f2;
 }
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+    background-color: #ccc;
+}
+
 @import './media.styl';

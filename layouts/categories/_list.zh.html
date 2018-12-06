@@ -1,0 +1,49 @@
+{{define "main"}}
+{{if eq .Title "Categories"}}
+<h1>类别</h1>
+{{else}}
+<h1>{{.Title}}</h1>
+{{end}}
+<div class="content">
+  <div class="content-inner">
+ 
+    <section>
+      {{ $paginator := .Paginate (where .Data.Pages "Section" "post") 8 }}
+      {{ range sort .Pages }}
+      {{ if .Params.categories }}
+      <article class="article">
+        <p class="article-date">
+          {{.Date.Format "2006/01/02"}}
+        </p>
+        <h4 class="article-title"><a href="{{.URL}}">{{ .Title}}</a></h4>
+        <p class="article-summary">{{.Summary}}</p>
+
+        <!-- <p class="des">{{.Params.description}}</p> -->
+        <!-- <p>{{ if .Params.tags }}
+          {{ range $tagIndex,$tagName := .Params.tags}}
+          {{$tagName}}
+          {{end}}
+          {{ end }}</p> -->
+
+        {{.Data.Terms.ByCount}}
+      </article>
+      {{end}}
+      {{ end }}
+
+      <!-- 分页 -->
+      <ul class="article-page">
+        {{ if $paginator.HasPrev}}
+        <li class="article-page-left"><a href="{{ $paginator.Prev.URL }}">Prev</a></li>
+        {{ else }}
+        <li class="article-page-left disabled">Prev</li>
+        {{ end }}
+        {{ if $paginator.HasNext }}
+        <a class="article-page-right" href="{{ $paginator.Next.URL }}">Next</a>
+        {{ else }}
+        <li class="article-page-right disabled">Next</li>
+        {{ end }}
+      </ul>
+    </section>
+  </div>
+</div>
+{{end}}

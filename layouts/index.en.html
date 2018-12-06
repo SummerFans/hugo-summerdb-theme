@@ -2,15 +2,18 @@
 <section class="list">
   {{ range where .Pages "Section" "post" }}
   <article class="item">
-    <h2 class="title title_en"><a href="#"> {{.Title}}</a></h2>
+    <h2 class="title title_en"><a href="{{.URL}}"> {{.Title}}</a></h2>
     <div class="articlemeta">
+      {{if .Params.categories}}
+        <span>Category: <a href="{{"categories/" | relLangURL}}{{lower .Params.categories}}">{{.Params.categories}}</a></span>
+      {{end}}
       {{if .Params.author}}
       <span>Posted by: {{.Params.author}} </span>
       {{else if .Params.source}}
       <span>Source: <a href="{{.Params.sourceLink}}" target="_block">{{.Params.source}}</a></span>
       {{end}}
       on 
-      <time datetime="2017-01-12">{{ .Date.Format "January 2, 2006" }}</time></div>
+      <time datetime="{{ .Date.Format "January 2, 2006" }}">{{ .Date.Format "January 2, 2006" }}</time></div>
     <div>
        {{.Summary}}
     </div>

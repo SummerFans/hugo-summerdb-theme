@@ -1,17 +1,26 @@
 {{define "main"}}
+<h1>#{{.Title}}</h1>
 <div class="content">
   <div class="content-inner">
-    <h3>Category</h3>
+    
     <section>
       {{ $paginator := .Paginate (where .Data.Pages "Section" "post") 8 }}
       {{ range sort .Paginator.Pages }}
-      {{ if .Params.category }}
+      {{ if .Params.tags }}
       <article class="article">
         <p class="article-date">
           {{.Date.Format "2006/01/02"}}
         </p>
         <h4 class="article-title"><a href="{{.URL}}">{{ .Title}}</a></h4>
         <p class="article-summary">{{.Summary}}</p>
+
+        <!-- <p class="des">{{.Params.description}}</p> -->
+        <!-- <p>{{ if .Params.tags }}
+          {{ range $tagIndex,$tagName := .Params.tags}}
+          {{$tagName}}
+          {{end}}
+          {{ end }}</p> -->
+
         {{.Data.Terms.ByCount}}
       </article>
       {{end}}

@@ -4,8 +4,8 @@
   <article class="item">
     <h2 class="title"><a href="{{.URL}}"> {{.Title}}</a></h2>
     <div class="articlemeta">
-      {{if .Params.category}}
-      <span>分类：{{.Params.category}}</span>
+      {{if .Params.categories}}
+      <span>分类：<a href="{{"categories/" | relLangURL}}{{lower .Params.categories}}">{{.Params.categories}}</a></span>
       {{end}}
       {{if .Params.author}}
       <span>作者: {{.Params.author}} </span>
@@ -15,31 +15,17 @@
       在
       <time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "2006-01-02"}}</time></div>
     <div>
-     {{.Summary}}
+        
+     <!-- {{.Summary}} -->
     </div>
     {{ if .Params.tags }}
     <ol class="tags">
       {{ range $tagIndex,$tagName := .Params.tags}}
-      <li>{{$tagName}}</li>
+      <li><a href="{{"tags/" |relLangURL}}{{lower $tagName}}">#{{$tagName}}</a></li>
       {{end}}
     </ol>
     {{ end }}
   </article>
   {{ end }}
-
-  <!-- paginator -->
-  {{ $paginator := .Paginate (where .Data.Pages "Section" "post") 8 }}
-  <ul class="article-page">
-    {{ if $paginator.HasPrev}}
-    <li class="article-page-left"><a href="{{ $paginator.Prev.URL }}">Prev</a></li>
-    {{ else }}
-    <li class="article-page-left disabled">Prev</li>
-    {{ end }}
-    {{ if $paginator.HasNext }}
-    <a class="article-page-right" href="{{ $paginator.Next.URL }}">Next</a>
-    {{ else }}
-    <li class="article-page-right disabled">Next</li>
-    {{ end }}
-  </ul>
 </section>
 {{ end }}

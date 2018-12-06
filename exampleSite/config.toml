@@ -5,22 +5,27 @@ theme = "hugo-summerdb-theme"
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = true
 
-[languages.en]
-  languageCode = "en-us"
 
-[languages.zh]
-  languageCode = "zh-cn"
+disqusShortname = "summerdb"
+googleAnalytics = "UA-123-45"
 
 
-pygmentsUseClassic = true
+# paginate = 2
+
+# pygmentsUseClassic = true
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 
 # Summary Length
 hasCJKLanguage = true
 
+
+
 [params]
+  description = "Text about my cool site"
+  images = ["site-feature-image.jpg"]
   AuthorName = "summer"
+  Subtitle = "Full Stack Developer && Designer"
 
 [menu]
   [[languages.en.menu.main]]
@@ -31,41 +36,63 @@ hasCJKLanguage = true
     name = "Index"
     url = "#about"
     weight = 1
-
+  [[languages.en.menu.main]]
+    name = "Article"
+    identifier = "article"
+    pre = "<i class='fa fa-road'></i>"
+    url = "/post/"
+    weight = 2
   [[languages.en.menu.main]]
     name = "Tags"
     identifier = "Tags"
     pre = "<i class='fa fa-road'></i>"
     url = "/tags/"
-    weight = 2
+    weight = 3
 
   [[languages.en.menu.main]]
     identifier = "About"
     name = "About"
     pre = "<i class='fa fa-heart'></i>"
     url = "/about/summer"
-    weight = 3
+    weight = 4
 
   [[languages.zh.menu.main]]
     name = "首页"
     url = "#about"
     weight = 1
-
+  [[languages.zh.menu.main]]
+    name = "文章"
+    identifier = "article"
+    pre = "<i class='fa fa-road'></i>"
+    url = "/post/"
+    weight = 2
   [[languages.zh.menu.main]]
     name = "标签"
     identifier = "Tags"
     pre = "<i class='fa fa-road'></i>"
     url = "/tags/"
-    weight = 2
+    weight = 3
 
   [[languages.zh.menu.main]]
     name = "关于我"
     identifier = "About"
     pre = "<i class='fa fa-heart'></i>"
     url = "/about/summer" 
-    weight = 3
+    weight = 4
   [[languages.zh.menu.main]]
     name = "EN"
     url = "../en"
     weight = 99
  
+
+
+[taxonomies]
+  about = "about"
+  categories = "categories"
+  tags = "tags"
+
+[languages.en]
+  languageCode = "en-us"
+
+[languages.zh]
+  languageCode = "zh-cn"

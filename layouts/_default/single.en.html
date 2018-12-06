@@ -1,0 +1,36 @@
+{{define "main"}}
+<div class="main">
+    <h1 id="title">{{ .Title }}</h1>
+    <div class="articlemeta" style="margin-bottom: 50px;font-size: 1rem;">
+            {{if .Params.category}}
+            <span>Category：{{.Params.category}}</span>
+            {{end}}
+            {{if .Params.author}}
+            <span>Posted by: {{.Params.author}} </span>
+            {{else if .Params.source}}
+            <span>Source: <a href="{{.Params.sourceLink}}" target="_block">{{.Params.source}}</a></span>
+            {{end}}
+            在
+            <time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "2006-01-02"}}</time></div>
+    <div>
+    <div>
+        <article id="content">
+            {{ .Content }}
+        </article>
+    </div>
+
+    <div class="comment">
+        {{ template "_internal/disqus.html" . }}
+    </div>
+    <!-- <div class="content-inner">
+        <div class="markdown-body">
+            {{.Content}}
+            {{if .Site.DisqusShortname}}
+            {{ template "_internal/disqus.html" . }}
+            {{end}}
+        </div>
+        <div class="table-content">{{.TableOfContents}}</div>
+       
+    </div> -->
+</div>
+{{end}}
