@@ -345,6 +345,19 @@ blockquote p {
 .container .section_list {
   padding: 5px 0;
 }
+.container .home_more {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 20px 0;
+  margin-top: 20px;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+.container .home_more:hover {
+  background-color: #eee;
+}
 .container .tags_name li,
 .container .categories_name li {
   float: left;
