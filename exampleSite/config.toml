@@ -6,8 +6,10 @@ defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = true
 
 
-disqusShortname = "summerdb"
-googleAnalytics = "UA-123-45"
+Paginate = 10
+
+disqusShortname = ""
+googleAnalytics = ""
 
 
 # paginate = 2
@@ -23,7 +25,6 @@ hasCJKLanguage = true
 
 [params]
   description = "Text about my cool site"
-  images = ["site-feature-image.jpg"]
   AuthorName = "summer"
   Subtitle = "Full Stack Developer && Designer"
 

@@ -1,87 +1,14 @@
-// @media screen and (max-width:768px) {
-
-// .container #header{
-// background-color:#000
-// }
-// }
-// @media  (min-width: 200px) and (max-width: 600px)  {
-  // .container {
-  //   #header {
-  //     background-color: #F4DF39;
-  //     width: 100vw;
-  //     height: 60px;
-  //     line-height: 10vh;
-
-  //     #logo {
-  //       text-align: left;
-  //       padding-left: 1rem;
-
-  //       h1 {
-  //         font-size: 1.2rem;
-  //         margin: 0;
-  //         line-height: 60px;
-  //       }
-  //     }
-
-  //     aside, nav {
-  //       display: none;
-  //     }
-  //   }
-
-  //   .content {
-  //     width: 100vw;
-
-  //     .content-inner {
-  //       height: auto;
-  //       padding:0 1.5rem;
-
-  //       .article{
-  //         padding:0;
-  //       }
-  //       .markdown-body{
-  //         width:100%;
-  //       }
-  //       .table-content {
-  //         display: none;
-  //       }
-  //     }
-  //   }
-  // }
-// }
-
-// @media (min-width: 600px) and (max-width:1024px) {
-  // .container {
-  //   .content {
-  //     flex: none;
-  //     width: 80vw;
-  //     height: 100vh;
-
-  //     .content-inner {
-  //       height: auto;
-
-  //       .markdown-body {
-  //         width: 100%;
-  //       }
-
-  //       .table-content {
-  //         display: none;
-  //       }
-  //     }
-  //   }
-  // }
-// }
-
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
   
   #header{
     overflow: initial;
-    .menu {
+    .nav {
       position :relative;
       label{
         display: block;
         cursor: pointer;
       }
-      .menu_list{
+      .menu{
         display:block;
         position : absolute;
         width: 100vw;
@@ -95,7 +22,7 @@
         opacity: 0;
         z-index: -999;
         line-height: 2rem;
-        li{
+        .item{
             display: block;
             overflow:hidden;
             margin:0;
@@ -112,25 +39,8 @@
             }
         }
       }
-      // .menu_list{
-      //   position : absolute;
-      //   right:0;
-      //   bottom:0;
-      //   display:block;
-      //   width: 100%;
-      //     li{
-      //       display: block;
-      //       overflow:hidden;
-            
-      //       a{
-      //         display: block;
-      //         width: 100%;
-      //         background-color: #eee;
-      //       }
-      //     }
-      // }
 
-      #toggle:checked + .menu_list{
+      #toggle:checked + .menu{
         display: block;
         top:70px;
         opacity: 1;

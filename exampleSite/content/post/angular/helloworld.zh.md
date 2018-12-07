@@ -1,9 +1,9 @@
 ---
-title: "为创业企业家提供300种令人敬畏的免费工具和服务"
+title: "Vue and GO为创业企业家提供300种令人敬畏的免费工具和服务"
 date: 2018-12-05T21:46:39+08:00
 author: summer
-tags: [javascript, ng, DI]
-categories: Angular
+tags: [vue, go]
+categories: Vue
 source: 
 draft: true
 ---

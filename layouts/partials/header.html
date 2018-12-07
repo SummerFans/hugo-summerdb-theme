@@ -2,5 +2,17 @@
     <div id="logo">
         <h1><a href="/" />{{.Site.Title}}</a></h1>
     </div>
-    {{partial "nav" .}}
+
+    <!-- menu -->
+    <nav class="nav">
+        <label for="toggle">&#9776;</label>
+        <input type="checkbox" id="toggle" />
+        <ul class="menu">
+            {{- $currentPage := . -}} {{ range .Site.Menus.main -}}
+            <li class="item {{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}active{{end}}">
+                <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+            </li>
+            {{- end }}
+        </ul>
+    </nav>
 </header>

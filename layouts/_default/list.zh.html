@@ -1,0 +1,15 @@
+{{ define "main"}}
+  {{ range  .Pages.GroupByDate "01" }}
+  <section  style="width: 100%;">
+  <h2>{{.Key}}月  <a href="#" style="float:right;font-size:1rem;">>>更多</a></h2>
+  <ul  style="display: block;">
+    {{ range .Pages }}
+    <li style="display: block;padding: 6px 0;">
+      <a href="{{.Permalink}}" >{{.Title}}</a>
+      <a href="{{"categories/" | relLangURL}}{{lower .Params.categories}}" style="float:right;">{{.Params.categories}}</a>
+    </li>
+    {{end}}
+  </ul>
+  {{end}}
+  </section>
+{{ end }}

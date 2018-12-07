@@ -1,9 +1,9 @@
 {{ define "main"}}
-<section class="list">
+<main class="list">
   {{ range where .Pages "Section" "post" }}
   <article class="item">
     <h2 class="title"><a href="{{.URL}}"> {{.Title}}</a></h2>
-    <div class="articlemeta">
+    <aside class="articlemeta">
       {{if .Params.categories}}
       <span>分类：<a href="{{"categories/" | relLangURL}}{{lower .Params.categories}}">{{.Params.categories}}</a></span>
       {{end}}
@@ -13,10 +13,10 @@
       <span>来源: <a href="{{.Params.sourceLink}}" target="_block">{{.Params.source}}</a></span>
       {{end}}
       在
-      <time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "2006-01-02"}}</time></div>
+      <time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "2006-01-02"}}</time>
+    </aside>
     <div>
-        
-     <!-- {{.Summary}} -->
+      <p>{{.Summary}}</p>
     </div>
     {{ if .Params.tags }}
     <ol class="tags">
@@ -27,5 +27,6 @@
     {{ end }}
   </article>
   {{ end }}
-</section>
+  <a href="{{"post/" | relLangURL}}">查看更多</a>
+</main>
 {{ end }}

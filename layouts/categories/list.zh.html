@@ -1,17 +1,50 @@
 {{define "main"}}
-<ul>
-    {{ range .Pages.ByDate }}
-    <li>
-        <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-        <time>{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
-        <ul>
-           {{ range sort .Pages }}
-            <li>
-                    {{ .Title}}
-            </li>
+<main style="width: 100%">
+    <h1>
+        {{if eq .Title "Categories"}}
+        类别
+        {{else}}
+        {{.Title}}
         {{end}}
-        </ul>
-    </li>
-    {{ end }}
-</ul>
-{{end}}
+        {{if ne .Title "Categories"}}
+        <a href="{{"categories/" | relLangURL}}" style="font-size: 14px;float:right;color:#eee;">所有类别</a>
+        {{end}}
+    </h1>
+
+    {{if eq .Title "Categories"}}
+    <ul class="categories_name">
+        {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+        <li>
+            <a href="{{"categories/" | relLangURL}}{{ $name | urlize }}">{{ $name | humanize }} ({{ $taxonomy.Count }})</a>
+        </li>
+        {{end}}
+    </ul>
+    {{end}}
+    {{if ne .Title "Categories"}}
+    {{ $paginator := .Paginate (where .Pages "Section" "post") }}
+    {{ range $paginator.Pages }}
+    <section class="section_list">
+        <a href="{{ .Permalink }}">{{.Title}}</a>
+        <time datetime="{{.Date.Format "2006-01-02"}}" style="float:right">{{.Date.Format "2006-01-02"}}</time>
+    </section>
+    {{end}}
+    
+
+    <!-- 分页 -->
+    <ul class="pagination">
+        {{ if $paginator.HasPrev}}
+        <li class="page-left"><a href="{{ $paginator.Prev.URL }}">Prev</a></li>
+        {{ else }}
+        <li class="left disabled">Prev</li>
+        {{ end }}
+        <li class="page-current">{{$paginator.PageNumber}}/{{$paginator.TotalPages}}</li>
+        {{ if $paginator.HasNext }}
+        <li class="page-right"><a class="article-page-right" href="{{ $paginator.Next.URL }}">Next</a></li>
+        {{ else }}
+        <li class="page-right disabled">Next</li>
+        {{ end }}
+    </ul>
+    {{end}}
+</main>
+
+{{ end }}

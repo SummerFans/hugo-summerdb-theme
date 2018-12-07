@@ -1,6 +1,6 @@
 ---
 title: "Average Manager vs. Great Manager"
-date: 2018-12-05T21:46:39+08:00
+date: 2018-11-05T21:46:39+08:00
 author: summer
 tags: []
 categories: "Angular"
